@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="description" content="ACII25 Tutorial - Understanding and Mitigating Bias in Emotion Recognition Systems">
+    <meta name="author" content="Woan-Shiuan Chien">
+    <link rel="image_src" href="img/CVPR2023.png" />
+
+    <!-- Meta properties -->
+    <meta property="og:title" content="ACII25 Tutorial - Understanding and Mitigating Bias in Emotion Recognition Systems">
+    <meta property="og:description" content="Presentation of the ACII25 tutorial">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://woanshiuanchien.github.io/bias-in-emotion-recognition-system//">
+    <meta property="og:image" content="img/CVPR2023.png"/>
+
+    <title>ACII25 Tutorial - Understanding and Mitigating Bias in Emotion Recognition Systems</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="main.css" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  </head>
+
+  <body>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+    
+    <section id="title">
+    <div class="container py-7 bg-orange">
+        <h1 class="text-letter-spacing-xs my-0 text-primary font-weight-bold text-center">
+            ACII25 Tutorial<br>
+            Understanding and Mitigating Bias in Emotion Recognition Systems
+        </h1>
+        <br>
+        <h2 class="text-sm text-dark text-center">
+          ACII 2025 Tutorial
+        </h2>
+        <p class="text-sm text-dark text-center">
+          Saturday, October 11st 2025 - Canbella<br>
+          <a href="https://youtu.be/AxhjGR1WIv8"><i class="fa fa-youtube-play" style="font-size:48px;color:red"></i></a>
+        </p>
+    </div>
+    </section>
+
+    <section id="bod">
+    <div class="container bg-orange" >								
+        <h2 class="text-uppercase text-letter-spacing-xs my-0 text-primary font-weight-bold text-center">
+            Organizers
+        </h2>
+        <br>
+        <div class="row text-center">
+            <div class="col-lg-3 col-sm-3 col-xs-12 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0" style="visibility: visible; animation-duration: 1s; animation-delay: 0.1s; animation-name: fadeInLeft;">
+                <div class="our-bod">
+                    <div class="single-bod">
+                        <a href="https://osimeoni.github.io">
+                            <img src="img/OS-crop.png" class="img-fluid cimg" alt="">
+                            <h3 class="text-bold text-name">Woan-Shiuan Chien</h3>
+                        </a>
+                        <p class="text-institute">valeo.ai</p>
+                    </div>
+                </div>
+            </div><!--- END COL -->	
+            <div class="col-lg-3 col-sm-3 col-xs-12 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0" style="visibility: visible; animation-duration: 1s; animation-delay: 0.2s; animation-name: fadeInLeft;">
+                <div class="our-bod">
+                    <div class="single-bod">
+                        <a href="https://weidixie.github.io/">
+                            <img src="https://weidixie.github.io/images/weidi_photo.png" class="img-fluid" alt="">
+                            <h3 class="text-bold text-name">Chi-Chun Lee</h3>
+                        </a>
+                        <p class="text-institute">Shanghai Jiao Tong University</p>
+                    </div>						
+                </div>
+            </div><!--- END COL --> 
+        </div><!--- END ROW -->			
+    </div><!--- END CONTAINER -->
+    </section>
+
+    <div class="container py-7 bg-orange">
+      <h2 class="text-uppercase text-letter-spacing-xs my-0 text-primary font-weight-bold text-center">
+          Summary
+      </h2>
+      <br>
+      <p class="text-sm text-dark centered-aligned">
+        Human perception and expression of emotion are profoundly shaped by individual traits, social norms, and cultural values. Emotion recognition systems, which aim to infer emotional states from speech, facial ex-pression, or physiological signals, inevitably reflect biases embedded in their training data, annotation processes, and model assumptions [1, 7]. These biases can stem from subjective labeling practices, un-balanced demographic representation, or cultural misalignments. As a result, such systems may systemat-ically underperform or behave inconsistently across gender, age, accent, or ethnic groups. This raises ethical concerns in applications where emotional AI interacts with diverse users, including mental health moni-toring, education, and public services [8]. A reliable emotion recognition system must not only be accurate but also inclusive, ensuring that users feel seen, heard, and respected.
+In recent years, bias in machine learning and AI systems has gained increasing attention, particularly due to its impact on equity, accountability, and societal trust. This growing awareness has led to broader discussions on fairness as a normative goal, with major conferences such as NeurIPS [9], FAccT [10], and ICML [11] hosting tutorials and special sessions on responsible AI, debiasing strategies, and trustworthy system design. While these efforts have advanced our understanding of bias in algorithmic decision-making, they often focus on general prediction tasks and lack a pipeline-specific perspective for emotion. Affective computing poses unique challenges due to its reliance on interpreting inherently ambiguous and subjective human emotions. In these systems, bias may emerge during model training and in upstream stages like annotation, where human raters’ perspectives and demographic backgrounds play a significant role. Achieving fairness in emotion recognition therefore requires more than accuracy; it must also consider how individuals feel perceived, valued, and represented by the system. In this context, both the annotation process and the model prediction carry potential for human-centered bias [12].
+In this tutorial, we focus on understanding and mitigating bias in emotion recognition systems across the full development pipeline. Speech emotion recognition (SER) serves as the central case study, offering concrete examples and tools for understanding, mitigating, and measuring bias in real-world affective systems. We examine emerging strategies that include (1) identifying bias introduced by speakers and raters [2, 3], (2) designing de-bias learning objectives using adversarial or calibration-based methods [2, 6], and (3) evaluating outcomes at both the group and individual levels fairness [4, 5]. The tutorial will conclude with an interactive hands-on session focused on bias analysis using the BIIC-Podcast dataset.
+      </p>
+      <p class="text-sm text-dark centered-aligned">
+        Recent works have shown exciting prospects of <i>avoiding annotations altogether</i> by <b>(1)</b> leveraging self-supervised features, <b>(2)</b> building self-supervised object-centric objectives and <b>(3)</b> combining different modalities. In this context, we propose a half-day tutorial in which we will provide an in-depth coverage of different angles on performing/building-upon object localization with no human supervision.
+      </p>
+  </div>
+
+    <div class="container py-7 bg-orange">
+        <h2 class="text-uppercase text-letter-spacing-xs my-0 text-primary font-weight-bold text-center">
+          Details & Schedule
+        </h2>
+        <br>
+        <div class="sched-div mb-2 center" id="Friday, Nov 13th">
+          <h4 class="mt-0 mb-2 text-dark op-8 font-weight-bold">
+            Monday, June 19th
+          </h4>
+          <p class="text-sm text-dark">
+            Time zone:	<a href="https://www.timeanddate.com/time/zone/canada/vancouver">PDT (Pacific Daylight Time)</a> <br>
+            Location: Vancouver Convention Center, <b>East 11</b> <br>
+            More details: <a href="https://cvpr.thecvf.com/virtual/2023/tutorial/18556"> CVPR tutorial page</a><br>
+            <font color="#9F000F"><b>NEWS:</b> recording available <a href="https://youtu.be/AxhjGR1WIv8">here</a>.</font>
+          </p>
+          <ul class="list-timeline list-timeline-primary">
+            <li class="list-timeline-item p-0 pb-3 pb-lg-4 d-flex flex-wrap flex-column">
+              <p class="my-0 text-dark flex-fw text-sm">
+                <span class="text-inverse op-8">08:30 - 09:10</span> - <i>Setting the stage: Visual objects in scene understanding </i>
+                by <a href="https://ptrckprz.github.io/">Patrick Pérez</a>
+              </p>
+            </li>
+            <li class="list-timeline-item p-0 pb-3 pb-lg-4 d-flex flex-wrap flex-column">
+              <p class="my-0 text-dark flex-fw text-sm">
+                <span class="text-inverse op-8">09:10 - 10:00</span> - <i>Exploiting self-supervised features: unsupervised object localization</i> 
+                by <a href="https://osimeoni.github.io">Oriane Siméoni</a>
+              </p>
+            </li>
+            <li class="list-timeline-item p-0 pb-3 pb-lg-4 d-flex flex-wrap flex-column">
+              <p class="my-0 text-dark flex-fw text-sm">
+                <span class="text-inverse op-8">10:00 - 10:20</span> - Break</p>
+            </li>
+            <li class="list-timeline-item p-0 pb-3 pb-lg-4 d-flex flex-wrap flex-column" data-toggle="collapse" data-target="#day-1-item-4">
+              <p class="my-0 text-dark flex-fw text-sm">
+                <span class="text-inverse op-8">10:20 - 11:10</span> - <i> Self-supervised learning integrating object aware priors</i> 
+                by <a href="https://tkipf.github.io/">Thomas Kipf</a>
+              </p>
+            </li>
+            <li class="list-timeline-item p-0 pb-3 pb-lg-4 d-flex flex-wrap flex-column">
+              <p class="my-0 text-dark flex-fw text-sm">
+                <span class="text-inverse op-8">11:10 - 12:00</span> - <i>Discovering objects with multi-modal signals</i> 
+                  by <a href="https://weidixie.github.io/">Weidi Xie</a>
+                </p>
+            </li>
+            <li class="list-timeline-item p-0 pb-3 pb-lg-4 d-flex flex-wrap flex-column">
+              <p class="my-0 text-dark flex-fw text-sm">
+                <span class="text-inverse op-8">12:00 - 12:10</span> - Closing Remarks
+              </p>
+            </li>
+          </ul>
+        </div>
+    </div>
+
+    <div class="container py-7 bg-orange">
+        <p class="text-sm text-dark text-center">For details, please contact <a href="mailto:oriane.simeoni@valeo.com" style="font-weight: normal;">Oriane Siméoni</a>.
+            <br>
+            Last updated: 28th or March 2023
+        </p>
+    </div>
+
+  </body>
+
+</html>
